@@ -11,25 +11,29 @@ class Program
         string input2 = Console.ReadLine();
         string[] words2 = input2.Split(" ");
 
+        // Знаходимо мінімальну довжину обох масивів слів,
+        // щоб не виходити за межі під час перевірки
         int minlength = Math.Min(words1.Length, words2.Length);
         int leftCount = 0;
         int rightCount = 0;
+        // Перевіряємо спільні слова зліва (початок речення)
         for (int i = 0; i < minlength; i++)
         {
 
             if (words1[i] == words2[i])
             {
-                leftCount++;
+                leftCount++; // знайшли спільне слово
             }
             else
-                break;
+                break; // якщо слова різні — зупиняємо перевірку
         }
+        // Перевіряємо спільні слова справа (кінець речення)
         for (int i = 0; i < minlength; i++)
         {
 
             if (words1[words1.Length - 1 - i] == words2[words2.Length - 1 - i])
             {
-                rightCount++;
+                rightCount++; // знайшли спільне слово
             }
             else 
                 break;
