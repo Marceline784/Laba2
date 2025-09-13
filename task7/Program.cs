@@ -1,8 +1,47 @@
 ﻿using System;
-    class Program
+class Program
+{
+    static void Main()
     {
-        static void Main()
+        Console.WriteLine("Enter n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        Console.WriteLine("Enter numbers: ");
+        for (int i = 0; i < n; i++)
         {
-            
+            numbers[i] = int.Parse(Console.ReadLine());
+        }
+        // запам’ятовуємо початок та довжину найдовшої послідовності
+        int biggestStart = 0;
+        int biggestLen = 1;
+        int start = 0;
+        int len = 1;
+        for (int i = 1; i < n; i++)
+        {
+            //Якщо поточний елемент рівний попередньому → серія продовжується
+            if (numbers[i] > numbers[i - 1]) // якщо число таке ж, як попереднє
+            {
+                len++;
+            }
+            else
+            {
+                //Якщо різні → серія закінчилась, починаємо нову
+                start = i;  // новий початок
+                len = 1;  // довжина нової серії = 1
+            }
+            //Якщо поточна послідовність довша за найкращу → оновлюємо "найдовшу"
+            if (len > biggestLen)
+            {
+                biggestLen = len;
+                biggestStart = start;
+            }
+        }
+        Console.WriteLine("Longest:");
+        for (int i = biggestStart; i < biggestStart + biggestLen; i++)
+        {
+            Console.Write(numbers[i] + " ");
         }
     }
+}
+
