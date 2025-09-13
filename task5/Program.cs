@@ -13,22 +13,25 @@
         char[] arr2 = input2.ToCharArray();
         Console.WriteLine("Result: ");
         int minlength = Math.Min(arr1.Length, arr2.Length);
+        // порівнюємо символи по одному
         for (int i = 0;i < minlength; i++)
         {
-            if (arr1[i] < arr2[i])
+            if (arr1[i] < arr2[i]) // якщо літера першого слова менша
             {
                 Console.WriteLine(input1);
                 Console.WriteLine(input2);
-                return;
+                return; // завершуємо програму
             }
-            else if (arr1[i] > arr2[i])
+            else if (arr1[i] > arr2[i]) // якщо літера другого слова менша
             {
                 Console.WriteLine(input2);
                 Console.WriteLine(input1);
                 return;
             }
+            // якщо літери однакові → цикл продовжується далі
         }
-        if (arr1.Length < arr2.Length)
+        // якщо всі літери однакові, тоді дивимось на довжину
+        if (arr1.Length < arr2.Length) // перше слово коротше → воно менше
         {
             Console.WriteLine(input1);
             Console.WriteLine(input2);
